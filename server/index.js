@@ -3,7 +3,6 @@ const http = require('http');
 const socketIo = require('socket.io');
 const cors = require('cors');
 const dotenv = require('dotenv');
-const mongoSanitize = require('express-mongo-sanitize');
 
 dotenv.config();
 
@@ -31,7 +30,6 @@ app.use(cors({
     origin: process.env.CLIENT_URL || "http://localhost:3000",
     credentials: true
 }));
-app.use(mongoSanitize()); // Data sanitization against NoSQL query injection - MUST BE BEFORE express.json()
 app.use(express.json());
 
 // Apply rate limiters
